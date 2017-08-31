@@ -1,0 +1,26 @@
+<main>
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a href="/">Strona główna</a>
+    </li>
+    <li class="breadcrumb-item active">Konto</li>
+  </ol>
+
+  <form action="/list/create" method="POST">
+    <div class="card card-login mx-auto mt-5">
+        <div class="card-header">
+          Dodaj nowe zadanie
+        </div>
+        <div class="card-body">
+          <form>
+            <div class="form-group">
+              <label for="textarea">Opis</label>
+              <textarea id="textarea" class="form-control" placeholder="Opis ..." name="task" rows="10"></textarea>
+              <input type="hidden" value="<%= req.session.auth %>" name="owner" />
+            </div>
+            <input class="btn btn-primary btn-block" type="submit" value="Dodaj" />
+          </form>
+        </div>
+      </div>
+  </form>
+</main>

@@ -1,0 +1,36 @@
+<main>
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a href="/">Strona główna</a>
+    </li>
+    <li class="breadcrumb-item active">Rejestracja</li>
+  </ol>
+
+  <form action="/user/create" method="POST">
+    <% var alerts = req.flash('error'); %>
+    <% for (var i in alerts) { %>
+      <div class="alert alert-danger">
+        <%= alerts[i] %>
+      </div>
+    <% } %>
+
+    <div class="card card-login mx-auto mt-5">
+        <div class="card-header">
+          Rejestracja
+        </div>
+        <div class="card-body">
+          <form>
+            <div class="form-group">
+              <label for="email">Adres e-mail</label>
+              <input type="email" id="email" class="form-control" placeholder="E-mail" name="email" />
+            </div>
+            <div class="form-group">
+              <label for="password">Hasło</label>
+              <input type="password" id="password" class="form-control" placeholder="Hasło" name="password" />
+            </div>
+            <input class="btn btn-primary btn-block" type="submit" value="Stwórz konto" />
+          </form>
+        </div>
+      </div>
+  </form>
+</main>

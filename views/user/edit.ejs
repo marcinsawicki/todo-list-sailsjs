@@ -1,0 +1,30 @@
+<main>
+  <form action="/user/update/<%= user.id %>" method="POST">
+    <div class="card card-login mx-auto mt-5">
+      <div class="card-header">
+        Edycja danych
+      </div>
+      <div class="card-body">
+        <form>
+          <div class="form-group">
+            <label for="name">Imię i nazwisko</label>
+            <input type="text" id="name" class="form-control" value="<% if (user.name) { %><%= user.name %><% } %>" placeholder="Imię i nazwisko" name="name" />
+          </div>
+          <div class="form-group">
+            <label for="email">Adres e-mail</label>
+            <input type="email" id="email" class="form-control" value="<% if (user.email) { %><%= user.email %><% } %>" placeholder="E-mail" name="email" />
+          </div>
+          <div class="form-group">
+            <label for="street">Ulica</label>
+            <input type="text" id="street" class="form-control" value="<% if (user.street) { %><%= user.street %><% } %>" placeholder="Ulica" name="street" />
+          </div>
+          <div class="form-group">
+            <label for="postcode">Kod pocztowy</label>
+            <input type="text" id="postcode" class="form-control" value="<% if (user.postcode) { %><%= user.postcode %><% } %>" placeholder="Kod pocztowy" name="postcode" />
+          </div>
+          <input class="btn btn-primary btn-block" type="submit" value="Zapisz" />
+        </form>
+      </div>
+    </div>
+  </form>
+</main>

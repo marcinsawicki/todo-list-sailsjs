@@ -1,0 +1,19 @@
+<main>
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a href="#">Strona główna</a>
+    </li>
+  </ol>
+
+  <% var alerts = req.flash('logout'); %>
+  <% for (var i in alerts) { %>
+    <div class="alert alert-success">
+      <%= alerts[i] %>
+    </div>
+  <% } %>
+
+  <div class="container" style="text-align:center;">
+    <h1>Pierwsza apka: TODO list</h1>
+    <img src="http://localhost:1337/images/sails.png" alt="sails.js" />
+  </div>
+</main>
