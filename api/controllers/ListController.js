@@ -19,4 +19,10 @@ module.exports = {
     });
   },
 
+  delete: function(req, res, next) {
+    List.destroy(req.param('id')).exec(function(){
+      res.redirect('/user/account/'+req.session.me);
+    });
+  },
+
 };

@@ -1,3 +1,14 @@
+<style>
+  table tr.krytyczne {
+    font-weight: 700;
+    color: #fff;
+    font-size: 20px;
+    background-color: #D30000;
+  }
+  table tr.krytyczne a {
+    color: #fff;
+  }
+</style>
 <% var alerts = req.flash('success'); %>
 <% for (var i in alerts) { %>
   <div class="alert alert-success">
@@ -28,7 +39,7 @@
           </thead>
           <tbody>
             <% _.each(user.tasks, function(task) { %>
-            <tr role="row">
+            <tr role="row" class="<% var status = task.status;if (status) {%><%= task.status %><%}%>">
               <td>
                 <%= task.task %>
               </td>

@@ -12,6 +12,10 @@ module.exports = {
       type: 'text',
       required: true
     },
+    status: {
+      type: 'string',
+      required: true
+    },
     owner: {
       model: 'user',
       required: true
