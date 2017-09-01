@@ -1,17 +1,43 @@
 <style>
   table tr.krytyczne {
     font-weight: 700;
-    color: #fff;
+    color: #a94442;
     font-size: 20px;
-    background-color: #D30000;
+    background-color: #f2dede;
   }
   table tr.krytyczne a {
-    color: #fff;
+    color: #a94442;
+  }
+  table tr.pilne {
+    color: #8a6d3b;
+    background-color: #fcf8e3;
+  }
+  table tr.pilne a {
+    color: #8a6d3b;
+  }
+  table tr.done {
+    color: #3c763d;
+    background-color: #dff0d8;
+  }
+  table tr.done a {
+    color: #3c763d;
+  }
+  table tr.zadanie i.fa.fa-bookmark {
+    color: #28c32a;
+  }
+  table a, table a:hover {
+    color: #212529;
   }
 </style>
-<% var alerts = req.flash('success'); %>
-<% for (var i in alerts) { %>
+<% var alerts_good = req.flash('success'); %>
+<% for (var i in alerts_good) { %>
   <div class="alert alert-success">
+    <%= alerts_good[i] %>
+  </div>
+<% } %>
+<% var alerts = req.flash('error'); %>
+<% for (var i in alerts) { %>
+  <div class="alert alert-danger">
     <%= alerts[i] %>
   </div>
 <% } %>
@@ -29,7 +55,10 @@
         <table class="table table-bordered dataTable" width="100%" id="dataTable" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
           <thead>
             <tr role="row">
-              <th>
+              <th style="width:5%;">
+                Status
+              </th>
+              <th style="width:75%;">
                 Opis
               </th>
               <th>
@@ -40,25 +69,23 @@
           <tbody>
             <% _.each(user.tasks, function(task) { %>
             <tr role="row" class="<% var status = task.status;if (status) {%><%= task.status %><%}%>">
+              <td style="text-align:center;">
+                <% var status = task.status;if (status=='done') {%><i class="fa fa-check-circle" aria-hidden="true"></i><%}%>
+                <% var status = task.status;if (status=='zadanie') {%><i class="fa fa-bookmark" aria-hidden="true"></i><%}%>
+                <% var status = task.status;if (status=='pilne') {%><i class="fa fa-info-circle" aria-hidden="true"></i><%}%>
+                <% var status = task.status;if (status=='krytyczne') {%><i class="fa fa-exclamation-circle" aria-hidden="true"></i><%}%>
+              </td>
               <td>
                 <%= task.task %>
               </td>
               <td style="text-align:center;">
+                <a href="/list/done/<%= task.id %>"><i class="fa fa-check" aria-hidden="true"></i></a>
+                <a href="/list/edit/<%= task.id %>"><i class="fa fa-cog" aria-hidden="true"></i></a>
                 <a href="/list/delete/<%= task.id %>"><i class="fa fa-times" aria-hidden="true"></i></a>
               </td>
             </tr>
             <% }); %>
           </tbody>
-          <tfoot>
-            <tr role="row">
-              <th>
-                Opis
-              </th>
-              <th>
-                Akcje
-              </th>
-            </tr>
-          </tfoot>
         </table>
       </div>
     </div>

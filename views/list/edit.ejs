@@ -1,0 +1,30 @@
+<main>
+  <form action="/list/update/<%= list.id %>" method="POST">
+    <div class="card card-login mx-auto mt-5">
+        <div class="card-header">
+          Edycja
+        </div>
+        <div class="card-body">
+          <form>
+            <div class="form-group">
+              <label for="select">Typ</label>
+              <select id="select" class="form-control" name="status">
+                <option <% var status = list.status;if (status=='zadanie') {%>selected<%}%> value="zadanie">
+                  Zadanie
+                </option>
+                <option <% var status = list.status;if (status=='pilne') {%>selected<%}%> value="pilne">
+                  Pilne
+                </option>
+                <option <% var status = list.status;if (status=='krytyczne') {%>selected<%}%> value="krytyczne">
+                  Krytyczne
+                </option>
+              </select>
+              <label for="textarea">Opis</label>
+              <textarea id="textarea" class="form-control" placeholder="Opis ..." name="task" rows="10"><%= list.task %></textarea>
+            </div>
+            <input class="btn btn-primary btn-block" type="submit" value="Edytuj" />
+          </form>
+        </div>
+      </div>
+  </form>
+</main>

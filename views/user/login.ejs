@@ -4,12 +4,6 @@
     <%= alerts[i] %>
   </div>
 <% } %>
-<ol class="breadcrumb">
-  <li class="breadcrumb-item">
-    <a href="/">Strona główna</a>
-  </li>
-  <li class="breadcrumb-item active">Logowanie</li>
-</ol>
 
 <form action="/user/signin/" method="POST">
   <% var alerts = req.flash('error'); %>
