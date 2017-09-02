@@ -1,19 +1,17 @@
-<% var alerts = req.flash('success'); %>
-<% for (var i in alerts) { %>
-  <div class="alert alert-success">
-    <%= alerts[i] %>
-  </div>
-<% } %>
-
 <form action="/user/signin/" method="POST">
-  <% var alerts = req.flash('error'); %>
-  <% for (var i in alerts) { %>
-    <div class="alert alert-danger">
-      <%= alerts[i] %>
-    </div>
-  <% } %>
-
   <div class="card card-login mx-auto mt-5">
+    <% var alerts = req.flash('success'); %>
+    <% for (var i in alerts) { %>
+      <div class="alert alert-success">
+        <%= alerts[i] %>
+      </div>
+    <% } %>
+    <% var alerts = req.flash('error'); %>
+    <% for (var i in alerts) { %>
+      <div class="alert alert-danger">
+        <%= alerts[i] %>
+      </div>
+    <% } %>
     <div class="card-header">
       Logowanie
     </div>

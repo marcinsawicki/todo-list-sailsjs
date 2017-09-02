@@ -1,49 +1,16 @@
-<style>
-  .card-header a {
-    color: #212529;
-  }
-  table tr.krytyczne {
-    font-weight: 700;
-    color: #a94442;
-    background-color: #f2dede;
-  }
-  table tr.krytyczne a {
-    color: #a94442;
-  }
-  table tr.pilne {
-    color: #8a6d3b;
-    background-color: #fcf8e3;
-  }
-  table tr.pilne a {
-    color: #8a6d3b;
-  }
-  table tr.done {
-    color: #3c763d;
-    background-color: #dff0d8;
-  }
-  table tr.done a {
-    color: #3c763d;
-  }
-  table tr.zadanie i.fa.fa-bookmark {
-    color: #28c32a;
-  }
-  table a, table a:hover {
-    color: #212529;
-  }
-</style>
-<% var alerts_good = req.flash('success'); %>
-<% for (var i in alerts_good) { %>
-  <div class="alert alert-success">
-    <%= alerts_good[i] %>
-  </div>
-<% } %>
-<% var alerts = req.flash('error'); %>
-<% for (var i in alerts) { %>
-  <div class="alert alert-danger">
-    <%= alerts[i] %>
-  </div>
-<% } %>
 <div class="row">
+  <% var alerts_good = req.flash('success'); %>
+  <% for (var i in alerts_good) { %>
+    <div class="alert alert-success">
+      <%= alerts_good[i] %>
+    </div>
+  <% } %>
+  <% var alerts = req.flash('error'); %>
+  <% for (var i in alerts) { %>
+    <div class="alert alert-danger">
+      <%= alerts[i] %>
+    </div>
+  <% } %>
   <div class="col-lg-8">
     <h3>Witaj <% if (!user.name) { %> Nieznajomy <% } else { %> <%= user.name %> <% } %></h3>
     <br />
