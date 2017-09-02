@@ -8,17 +8,17 @@
 module.exports = {
 
   attributes: {
-    task: {
+    name: {
       type: 'text',
-      required: true
-    },
-    status: {
-      type: 'string',
       required: true
     },
     owner: {
       model: 'user',
       required: true
+    },
+    tasks: {
+      collection: 'tasks',
+      via: 'list'
     }
   }
 };

@@ -1,31 +1,23 @@
-<% var alerts = req.flash('success'); %>
-<% for (var i in alerts) { %>
-  <div class="alert alert-success">
-    <%= alerts[i] %>
-  </div>
-<% } %>
-
 <form action="/user/signin/" method="POST">
-  <% var alerts = req.flash('error'); %>
-  <% for (var i in alerts) { %>
-    <div class="alert alert-danger">
-      <%= alerts[i] %>
-    </div>
-  <% } %>
-
-  <div class="card card-login mx-auto mt-5">
+  <div class="card card-form mx-auto mt-5">
     <div class="card-header">
       Logowanie
     </div>
     <div class="card-body">
+      <% var alerts = req.flash('error'); %>
+      <% for (var i in alerts) { %>
+        <div class="alert alert-danger">
+          <%= alerts[i] %>
+        </div>
+      <% } %>
       <form>
         <div class="form-group">
           <label for="email">Adres e-mail</label>
-          <input type="email" id="email" class="form-control" placeholder="E-mail" name="email" />
+          <input type="email" id="email" class="form-control" placeholder="E-mail" name="email" required />
         </div>
         <div class="form-group">
           <label for="password">Hasło</label>
-          <input type="password" id="password" class="form-control" placeholder="Hasło" name="password" />
+          <input type="password" id="password" class="form-control" placeholder="Hasło" name="password" required />
         </div>
         <input class="btn btn-primary btn-block" type="submit" value="Loguj" />
       </form>

@@ -1,5 +1,5 @@
 <form action="/list/update/<%= list.id %>" method="POST">
-  <div class="card card-form mx-auto mt-5">
+  <div class="card card-login mx-auto mt-5">
       <div class="card-header">
         Edytuj listę
       </div>
@@ -7,7 +7,7 @@
         <form>
           <div class="form-group">
             <label for="nazwa">Nazwa</label>
-            <input type="text" id="nazwa" class="form-control" value="<%= list.name %>" placeholder="Nazwa ..." name="name" required />
+            <input type="text" id="nazwa" class="form-control" value="<%= list.name %>" placeholder="Nazwa ..." name="name" />
             <input type="hidden" value="<%= req.session.me %>" name="owner" />
           </div>
           <input class="btn btn-primary btn-block" type="submit" value="Edytuj" />
