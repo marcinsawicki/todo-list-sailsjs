@@ -1,4 +1,7 @@
 <style>
+  .card-header a {
+    color: #212529;
+  }
   table tr.krytyczne {
     font-weight: 700;
     color: #a94442;
@@ -51,6 +54,10 @@
       <div class="card mb-3">
         <div class="card-header">
           <i class="fa fa-table"></i> <%= lists.name %>
+          <span style="float:right;">
+            <a href="/list/edit/<%= lists.id %>"><i class="fa fa-cog" aria-hidden="true"></i></a>
+            <a href="/list/delete/<%= lists.id %>"><i class="fa fa-times" aria-hidden="true"></i></a>
+          </span>
         </div>
         <div class="card-body">
           <table class="table table-bordered dataTable" width="100%" id="dataTable" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
