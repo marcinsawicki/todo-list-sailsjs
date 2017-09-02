@@ -6,11 +6,13 @@
     margin-left: 10px
     &:hover
       color: #1997c6
+    &.delete:hover
+      color: #f2405d
 table
   background-color: #1e2127!important
   border: 1px solid rgba(255,255,255,0.15)!important
   thead
-    border-bottom: 3px solid #434857!important
+    border-bottom: 1px solid #434857!important
   tbody
     font-weight: 300
   th, tr, td
@@ -18,6 +20,8 @@ table
   td
     vertical-align: middle!important
   tr
+    position: relative
+    z-index: 1
     &.krytyczne
       font-weight: 700
       color: #fff
@@ -25,6 +29,7 @@ table
       animation-name: glow
       animation-duration: 3s
       animation-iteration-count: infinite
+      z-index: 100
       a
         color: #fff
         &:hover
@@ -53,31 +58,33 @@ table
       color: #6dd123
     &.delete:hover
       color: #f2405d
+    &.edit:hover
+      color: #1997c6
 @keyframes glow
   0%
-    box-shadow: 0px 0px 0px #E64759
+    box-shadow: 0px 0px 0px 0px #E64759
   50%
-    box-shadow: 0px 0px 30px #E64759
+    box-shadow: 0px 0px 30px 2px #E64759
   100%
-    box-shadow: 0px 0px 0px #E64759
+    box-shadow: 0px 0px 0px 0px #E64759
 @-webkit-keyframes glow
   0%
-    box-shadow: 0px 0px 0px #E64759
+    box-shadow: 0px 0px 0px 0px #E64759
   50%
-    box-shadow: 0px 0px 30px #E64759
+    box-shadow: 0px 0px 30px 2px #E64759
   100%
-    box-shadow: 0px 0px 0px #E64759
+    box-shadow: 0px 0px 0px 0px #E64759
 @-moz-keyframes glow
   0%
-    box-shadow: 0px 0px 0px #E64759
+    box-shadow: 0px 0px 0px 0px #E64759
   50%
-    box-shadow: 0px 0px 30px #E64759
+    box-shadow: 0px 0px 30px 2px #E64759
   100%
-    box-shadow: 0px 0px 0px #E64759
+    box-shadow: 0px 0px 0px 0px #E64759
 @-ms-keyframes glow
   0%
-    box-shadow: 0px 0px 0px #E64759
+    box-shadow: 0px 0px 0px 0px #E64759
   50%
-    box-shadow: 0px 0px 30px #E64759
+    box-shadow: 0px 0px 30px 2px #E64759
   100%
-    box-shadow: 0px 0px 0px #E64759
+    box-shadow: 0px 0px 0px 0px #E64759

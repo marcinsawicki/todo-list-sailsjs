@@ -25,23 +25,25 @@ module.exports = {
       if (!list) return next(err);
 
       if (list.owner == req.session.me) {
-        List.destroy(req.param('id')).exec(function(){
-          // res.redirect('/user/account/' + req.session.me);
+        List.destroy(req.param('id')).exec(function() {
 
           Tasks.find({list:req.param('id')}).populateAll().exec( function findTask(err, task) {
             if (err) return next(err);
             if (!task) return next(err);
 
-            if (task[0].owner.id == req.session.me) {
-              Tasks.destroy({list:req.param('id')}).exec(function(){
-                res.redirect('/user/account/' + req.session.me);
-              });
-            } else {
-              req.flash('error', 'Oszalałeś?!');
+            if (task.length === 0) {
               res.redirect('/user/account/' + req.session.me);
+            } else {
+              if (task[0].owner.id == req.session.me) {
+                Tasks.destroy({list:req.param('id')}).exec(function(){
+                  res.redirect('/user/account/' + req.session.me);
+                });
+              } else {
+                req.flash('error', 'Oszalałeś?!');
+                res.redirect('/user/account/' + req.session.me);
+              }
             }
           });
-
         });
       } else {
         req.flash('error', 'Oszalałeś?!');

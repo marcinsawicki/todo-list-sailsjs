@@ -34,8 +34,8 @@
         <div class="card-header">
           <i class="fa fa-list" aria-hidden="true"></i> <%= lists.name %>
           <span style="float:right;">
-            <a href="/list/edit/<%= lists.id %>"><i class="fa fa-cog" aria-hidden="true"></i></a>
-            <a href="/list/delete/<%= lists.id %>"><i class="fa fa-times" aria-hidden="true"></i></a>
+            <a class="edit" href="/list/edit/<%= lists.id %>"><i class="fa fa-cog" aria-hidden="true"></i></a>
+            <a class="delete" href="/list/delete/<%= lists.id %>"><i class="fa fa-times" aria-hidden="true"></i></a>
           </span>
         </div>
         <div class="card-body">
@@ -94,9 +94,12 @@
         <li class="nav-item">
           <a href="/list/new/<%= user.id %>">Dodaj listę</a>
         </li>
-        <li class="nav-item">
-          <a href="/tasks/new/<%= user.id %>">Dodaj zadanie</a>
-        </li>
+        <% if (user.list[0]) { %>
+          <li class="nav-item">
+            <a href="/tasks/new/<%= user.id %>">Dodaj zadanie</a>
+          </li>
+        <% } %>
+
       </ul>
     </div>
   </div>
