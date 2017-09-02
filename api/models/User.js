@@ -25,8 +25,12 @@ module.exports = {
     postcode: {
       type: 'string'
     },
-    tasks: {
+    list: {
       collection: 'list',
+      via: 'owner'
+    },
+    tasks: {
+      collection: 'tasks',
       via: 'owner'
     }
   },

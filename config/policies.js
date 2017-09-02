@@ -37,6 +37,10 @@ module.exports.policies = {
 
   ListController: {
     '*': 'sessionAuth'
+  },
+
+  TaskController: {
+    '*': 'sessionAuth'
   }
 
   /***************************************************************************

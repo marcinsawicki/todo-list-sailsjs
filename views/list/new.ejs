@@ -1,32 +1,17 @@
-<main>
-
-  <form action="/list/create" method="POST">
-    <div class="card card-login mx-auto mt-5">
-        <div class="card-header">
-          Dodaj nowe zadanie
-        </div>
-        <div class="card-body">
-          <form>
-            <div class="form-group">
-              <label for="select">Typ</label>
-              <select id="select" class="form-control" name="status">
-                <option value="zadanie">
-                  Zadanie
-                </option>
-                <option value="pilne">
-                  Pilne
-                </option>
-                <option value="krytyczne">
-                  Krytyczne
-                </option>
-              </select>
-              <label for="textarea">Opis</label>
-              <textarea id="textarea" class="form-control" placeholder="Opis ..." name="task" rows="10"></textarea>
-              <input type="hidden" value="<%= req.session.me %>" name="owner" />
-            </div>
-            <input class="btn btn-primary btn-block" type="submit" value="Dodaj" />
-          </form>
-        </div>
+<form action="/list/create" method="POST">
+  <div class="card card-login mx-auto mt-5">
+      <div class="card-header">
+        Dodaj nową listę
       </div>
-  </form>
-</main>
+      <div class="card-body">
+        <form>
+          <div class="form-group">
+            <label for="nazwa">Nazwa</label>
+            <input type="text" id="nazwa" class="form-control" placeholder="Nazwa ..." name="name" />
+            <input type="hidden" value="<%= req.session.me %>" name="owner" />
+          </div>
+          <input class="btn btn-primary btn-block" type="submit" value="Dodaj" />
+        </form>
+      </div>
+    </div>
+</form>

@@ -39,9 +39,21 @@ module.exports = {
       if (err) return next(err);
       if (!user) return next(err);
 
-      res.view({
-        user: user
+      List.find({owner:req.param('id')}).populateAll().exec( function showList(err, list) {
+        if (err) return next(err);
+        if (!list) return next(err);
+
+        if (req.param('id') == req.session.me) {
+          res.view({
+            user: user,
+            list: list
+          });
+        } else {
+          req.flash('error', 'Wystąpił błąd. Proszę zalogować się ponownie.');
+          res.redirect('/user/login/');
+        }
       });
+
     });
   },
 

@@ -2,7 +2,6 @@
   table tr.krytyczne {
     font-weight: 700;
     color: #a94442;
-    font-size: 20px;
     background-color: #f2dede;
   }
   table tr.krytyczne a {
@@ -47,48 +46,54 @@
     <br />
     Poniżej znajduje się lista zadań do zrobienia.
     <hr />
-    <div class="card mb-3">
-      <div class="card-header">
-        <i class="fa fa-table"></i> TODO list
+    <% var i = 0; %>
+    <% _.each(user.list, function(lists) { %>
+      <div class="card mb-3">
+        <div class="card-header">
+          <i class="fa fa-table"></i> <%= lists.name %>
+        </div>
+        <div class="card-body">
+          <table class="table table-bordered dataTable" width="100%" id="dataTable" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
+            <thead>
+              <tr role="row">
+                <th style="width:5%;">
+                  Status
+                </th>
+                <th style="width:75%;">
+                  Opis
+                </th>
+                <th>
+                  Akcje
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <% _.each(list[i].tasks, function(task) { %>
+              <tr role="row" class="<% var status = task.status;if (status) {%><%= task.status %><%}%>">
+                <td style="text-align:center;">
+                  <% var status = task.status;if (status=='done') {%><i class="fa fa-check-circle" aria-hidden="true"></i><%}%>
+                  <% var status = task.status;if (status=='zadanie') {%><i class="fa fa-bookmark" aria-hidden="true"></i><%}%>
+                  <% var status = task.status;if (status=='pilne') {%><i class="fa fa-info-circle" aria-hidden="true"></i><%}%>
+                  <% var status = task.status;if (status=='krytyczne') {%><i class="fa fa-exclamation-circle" aria-hidden="true"></i><%}%>
+                </td>
+                <td>
+                  <%= task.task %>
+                </td>
+                <td style="text-align:center;">
+                  <% var status = task.status;if (!(status=='done')) {%>
+                    <a href="/tasks/done/<%= task.id %>"><i class="fa fa-check" aria-hidden="true"></i></a>
+                  <%}%>
+                  <a href="/tasks/edit/<%= task.id %>"><i class="fa fa-cog" aria-hidden="true"></i></a>
+                  <a href="/tasks/delete/<%= task.id %>"><i class="fa fa-times" aria-hidden="true"></i></a>
+                </td>
+              </tr>
+              <% }); %>
+            </tbody>
+          </table>
+        </div>
       </div>
-      <div class="card-body">
-        <table class="table table-bordered dataTable" width="100%" id="dataTable" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
-          <thead>
-            <tr role="row">
-              <th style="width:5%;">
-                Status
-              </th>
-              <th style="width:75%;">
-                Opis
-              </th>
-              <th>
-                Akcje
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <% _.each(user.tasks, function(task) { %>
-            <tr role="row" class="<% var status = task.status;if (status) {%><%= task.status %><%}%>">
-              <td style="text-align:center;">
-                <% var status = task.status;if (status=='done') {%><i class="fa fa-check-circle" aria-hidden="true"></i><%}%>
-                <% var status = task.status;if (status=='zadanie') {%><i class="fa fa-bookmark" aria-hidden="true"></i><%}%>
-                <% var status = task.status;if (status=='pilne') {%><i class="fa fa-info-circle" aria-hidden="true"></i><%}%>
-                <% var status = task.status;if (status=='krytyczne') {%><i class="fa fa-exclamation-circle" aria-hidden="true"></i><%}%>
-              </td>
-              <td>
-                <%= task.task %>
-              </td>
-              <td style="text-align:center;">
-                <a href="/list/done/<%= task.id %>"><i class="fa fa-check" aria-hidden="true"></i></a>
-                <a href="/list/edit/<%= task.id %>"><i class="fa fa-cog" aria-hidden="true"></i></a>
-                <a href="/list/delete/<%= task.id %>"><i class="fa fa-times" aria-hidden="true"></i></a>
-              </td>
-            </tr>
-            <% }); %>
-          </tbody>
-        </table>
-      </div>
-    </div>
+    <% i++ %>
+    <% }); %>
   </div>
 
   <div class="col-lg-4">
@@ -109,7 +114,8 @@
       </div>
       <div class="list-group list-group-flush small">
         <a class="list-group-item list-group-item-action" href="/user/edit/<%= user.id %>">Edytuj dane</a>
-        <a class="list-group-item list-group-item-action" href="/list/new/<%= user.id %>">Dodaj zadanie</a>
+        <a class="list-group-item list-group-item-action" href="/list/new/<%= user.id %>">Dodaj listę</a>
+        <a class="list-group-item list-group-item-action" href="/tasks/new/<%= user.id %>">Dodaj zadanie</a>
       </div>
     </div>
   </div>
