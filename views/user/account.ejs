@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <% var alerts_good = req.flash('success'); %>
     <% for (var i in alerts_good) { %>
-      <div class="alert alert-success">
+      <div class="alert alert-success" style="margin-top:15px;">
         <%= alerts_good[i] %>
       </div>
     <% } %>
