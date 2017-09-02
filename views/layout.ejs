@@ -4,8 +4,8 @@
     <title><%=typeof title == 'undefined' ? 'New Sails App' : title%></title>
 
     <!-- Viewport mobile tag for sensible mobile support -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
 
     <!--
         Stylesheets and Preprocessors
@@ -38,7 +38,7 @@
   </head>
 
   <body>
-    <header class="container-fluid">
+    <div id="header" class="container-fluid">
       <span class="page-title">TODO List</span>
       <ul class="nav float-right">
         <% if (req.session.me) { %>
@@ -65,7 +65,7 @@
           </li>
         <% } %>
       </ul>
-    </header>
+    </div>
 
 
     <div class="container-fluid">

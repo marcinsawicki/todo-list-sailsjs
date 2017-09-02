@@ -1,26 +1,38 @@
 <div class="row">
-  <% var alerts_good = req.flash('success'); %>
-  <% for (var i in alerts_good) { %>
-    <div class="alert alert-success">
-      <%= alerts_good[i] %>
-    </div>
-  <% } %>
-  <% var alerts = req.flash('error'); %>
-  <% for (var i in alerts) { %>
-    <div class="alert alert-danger">
-      <%= alerts[i] %>
-    </div>
-  <% } %>
-  <div class="col-lg-8">
+  <div class="container-fluid">
+    <% var alerts_good = req.flash('success'); %>
+    <% for (var i in alerts_good) { %>
+      <div class="alert alert-success">
+        <%= alerts_good[i] %>
+      </div>
+    <% } %>
+    <% var alerts = req.flash('error'); %>
+    <% for (var i in alerts) { %>
+      <div class="alert alert-danger">
+        <%= alerts[i] %>
+      </div>
+    <% } %>
+  </div>
+</div>
+<header class="account-info row">
+  <div class="col-lg-9">
     <h3>Witaj <% if (!user.name) { %> Nieznajomy <% } else { %> <%= user.name %> <% } %></h3>
     <br />
     Poniżej znajduje się lista zadań do zrobienia.
-    <hr />
+  </div>
+  <div class="col-lg-3" style="text-align:right;">
+      <% if (user.name) { %><%= user.name %><br /><% } %>
+      <% if (user.email) { %><%= user.email %><br /><% } %>
+      <% if (user.role) { %><%= user.role %><br /><% } %>
+  </div>
+</header>
+<div class="row">
+  <div class="col-lg-10">
     <% var i = 0; %>
     <% _.each(user.list, function(lists) { %>
       <div class="card mb-3">
         <div class="card-header">
-          <i class="fa fa-table"></i> <%= lists.name %>
+          <i class="fa fa-list" aria-hidden="true"></i> <%= lists.name %>
           <span style="float:right;">
             <a href="/list/edit/<%= lists.id %>"><i class="fa fa-cog" aria-hidden="true"></i></a>
             <a href="/list/delete/<%= lists.id %>"><i class="fa fa-times" aria-hidden="true"></i></a>
@@ -36,7 +48,7 @@
                 <th style="width:75%;">
                   Opis
                 </th>
-                <th>
+                <th style="text-align:center;">
                   Akcje
                 </th>
               </tr>
@@ -44,7 +56,7 @@
             <tbody>
               <% _.each(list[i].tasks, function(task) { %>
               <tr role="row" class="<% var status = task.status;if (status) {%><%= task.status %><%}%>">
-                <td style="text-align:center;">
+                <td style="text-align:center;font-size:22px;">
                   <% var status = task.status;if (status=='done') {%><i class="fa fa-check-circle" aria-hidden="true"></i><%}%>
                   <% var status = task.status;if (status=='zadanie') {%><i class="fa fa-bookmark" aria-hidden="true"></i><%}%>
                   <% var status = task.status;if (status=='pilne') {%><i class="fa fa-info-circle" aria-hidden="true"></i><%}%>
@@ -55,10 +67,10 @@
                 </td>
                 <td style="text-align:center;">
                   <% var status = task.status;if (!(status=='done')) {%>
-                    <a href="/tasks/done/<%= task.id %>"><i class="fa fa-check" aria-hidden="true"></i></a>
+                    <a class="done" href="/tasks/done/<%= task.id %>"><i class="fa fa-check" aria-hidden="true"></i></a>
                   <%}%>
-                  <a href="/tasks/edit/<%= task.id %>"><i class="fa fa-cog" aria-hidden="true"></i></a>
-                  <a href="/tasks/delete/<%= task.id %>"><i class="fa fa-times" aria-hidden="true"></i></a>
+                  <a class="edit" href="/tasks/edit/<%= task.id %>"><i class="fa fa-cog" aria-hidden="true"></i></a>
+                  <a class="delete" href="/tasks/delete/<%= task.id %>"><i class="fa fa-times" aria-hidden="true"></i></a>
                 </td>
               </tr>
               <% }); %>
@@ -70,27 +82,22 @@
     <% }); %>
   </div>
 
-  <div class="col-lg-4">
+  <div class="col-lg-2 sub-menu">
     <div class="card mb-3">
-      <div class="card-header">
-        <i class="fa fa-user" aria-hidden="true"></i> Twoje dane
-      </div>
-      <div class="card-body">
-        <% if (user.name) { %><%= user.name %><br /><% } %>
-        <% if (user.email) { %><%= user.email %><br /><% } %>
-        <% if (user.street) { %><%= user.street %><br /><% } %>
-        <% if (user.postcode) { %><%= user.postcode %><br /><% } %>
-      </div>
-    </div>
-    <div class="card mb-3">
-      <div class="card-header">
-        <i class="fa fa-bars" aria-hidden="true"></i> Menu
-      </div>
-      <div class="list-group list-group-flush small">
-        <a class="list-group-item list-group-item-action" href="/user/edit/<%= user.id %>">Edytuj dane</a>
-        <a class="list-group-item list-group-item-action" href="/list/new/<%= user.id %>">Dodaj listę</a>
-        <a class="list-group-item list-group-item-action" href="/tasks/new/<%= user.id %>">Dodaj zadanie</a>
-      </div>
+      <header class="card-header sub-menu-header">
+        Zarządzanie
+      </header>
+      <ul class="nav">
+        <li class="nav-item">
+          <a href="/user/edit/<%= user.id %>">Edytuj dane</a>
+        </li>
+        <li class="nav-item">
+          <a href="/list/new/<%= user.id %>">Dodaj listę</a>
+        </li>
+        <li class="nav-item">
+          <a href="/tasks/new/<%= user.id %>">Dodaj zadanie</a>
+        </li>
+      </ul>
     </div>
   </div>
 </div>

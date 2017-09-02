@@ -1,26 +1,36 @@
 .card
-  width: 50%
   background-color: #434857!important
+  border: 1px solid rgba(255,255,255,.15)
+  &-form
+    width: 35%
+    .card-header
+      text-align: center
   &-header
     font-size: 20px
-    text-align: center
     font-weight: 700
     text-transform: uppercase
-  input, input:focus
+  &-body
+    border-top: 1px solid rgba(255,255,255,.15)
+  input, input:focus, select, select:focus, textarea, textarea:focus
     background-color: #1e2127
     color: #fff
-  input:focus
+  input, select, textarea
+    border-color: rgba(255,255,255,.15)
+  input:focus, select:focus, textarea:focus
     border-color: #1997c6
   input.btn
-    border-color: rgba(0,0,0,.15)
+    border-color: rgba(255,255,255,.15)
     margin: 0 auto
     text-transform: uppercase
     font-weight: 700
     width: auto
-    padding-left: 20px
-    padding-right: 20px
-    &:hover
+    padding: 0 20px
+    height: 40px
+    line-height: 40px
+    &:hover, &:focus
+      border: 1px solid transparent
       cursor: pointer
       background-color: #1997c6!important
+      box-shadow: none
   .d-block
     display: inline-block!important

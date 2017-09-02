@@ -19,10 +19,7 @@ module.exports = {
       type: 'string',
       required: true
     },
-    street: {
-      type: 'string'
-    },
-    postcode: {
+    role: {
       type: 'string'
     },
     list: {

@@ -1,15 +1,15 @@
 <form action="/user/create" method="POST">
-  <div class="card card-login mx-auto mt-5">
-    <% var alerts = req.flash('error'); %>
-    <% for (var i in alerts) { %>
-      <div class="alert alert-danger">
-        <%= alerts[i] %>
-      </div>
-    <% } %>
+  <div class="card card-form mx-auto mt-5">
     <div class="card-header">
       Rejestracja
     </div>
     <div class="card-body">
+      <% var alerts = req.flash('error'); %>
+      <% for (var i in alerts) { %>
+        <div class="alert alert-danger">
+          <%= alerts[i] %>
+        </div>
+      <% } %>
       <form>
         <div class="form-group">
           <label for="email">Adres e-mail</label>
