@@ -89,4 +89,20 @@ module.exports.connections = {
   *                                                                          *
   ***************************************************************************/
 
+  remoteMysql: {
+    adapter: 'sails-mysql',
+    url: process.env.DATABASE_URL,
+    pool: true,
+    connectionLimit: 30,
+    waitForConnections: true
+  },
+
+  localMysql: {
+    adapter: 'sails-mysql',
+    url: process.env.DATABASE_URL,
+    pool: true,
+    connectionLimit: 30,
+    waitForConnections: true
+  }
+
 };
